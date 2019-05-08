@@ -2,7 +2,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"],function(Controller){
  return Controller.extend("my.namespace.controllers.SearchView",{
    onInit:function(){
     this.getView()
-     .byId('flightsList')
       .setModel(
        new sap.ui.model.json.JSONModel(
         {
@@ -15,12 +14,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller"],function(Controller){
 
  searchButtonPressed:function(oEvent){
    var sValue = this.getView().byId('searchInput').getValue();
-   this.getView().getModel().read('/FlightsSet',{
-    filters:[new sap.ui.model.Filter({
+   var filters = [];
+   if(sValue){
+   	filters.push(new sap.ui.model.Filter({
      path: 'DepartureAirport',
      operator: sap.ui.model.FilterOperator.EQ,
      value1: sValue
-    })],
+    }));
+   }
+   this.getView().getModel().read('/FlightsSet',{
+    filters:filters,
    success:jQuery.proxy(this.handleValuesFetched,this),
    error:jQuery.proxy(this.handleError,this)
   });
@@ -28,8 +31,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"],function(Controller){
  
  handleValuesFetched: function(data){
    this.getView()
-    .getModel('filteredFlights')
-     .setProperty('/FlightsSet',data.results);
+    .getModel("filteredFlights")
+     .setData({"FlightsSet": data.results});
  },
 
  handleError: function(error){
