@@ -3,7 +3,7 @@ sap.ui.define(["sap/ui/core/util/MockServer"], function(MockServer){
   return {
    init: function(){
     var oMockServer = new MockServer({
-    rootUri: "/"
+    rootUri: "/sap/opu/odata/sap/ZODATA_SERVICE/"
    });
    oMockServer.simulate("../localService/metadata.xml", {
    sMockdataBaseUrl: "../localService/mockdata",
@@ -11,5 +11,5 @@ sap.ui.define(["sap/ui/core/util/MockServer"], function(MockServer){
   });
   oMockServer.start();
   }
- }
-}
+ };
+});
