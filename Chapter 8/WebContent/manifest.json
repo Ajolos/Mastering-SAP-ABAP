@@ -60,7 +60,7 @@
 				"clearTarget": false,
 				"transition": "show",
 				"bypassed": {
-					"target": ["invalid"]
+					"target": ["search"]
 				}
 			},
 			"routes": [{
