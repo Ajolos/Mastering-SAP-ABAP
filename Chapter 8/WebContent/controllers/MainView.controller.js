@@ -1,3 +1,3 @@
 sap.ui.define(["sap/ui/core/mvc/Controller"],function(Controller){
- return Controller.extend("my.namespace.controlles.MainView",{})
+ return Controller.extend("my.namespace.controlles.MainView",{});
 });
