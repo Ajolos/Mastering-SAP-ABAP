@@ -5,19 +5,21 @@
   <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
  <script
   id="sap-ui-bootstrap"
-  src="https://sapui5.hana.ondemand.com/[version]/resources/sap-ui-core.js"
+  src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
   data-sap-ui-libs="sap.m"
-  data-sap-ui-theme="sap_belize">
+  data-sap-ui-theme="sap_belize"
+  data-sap-ui-resourceroots='{
+	    "my.namespace":"../../"
+	  }'>
  </script>
 
  <script>
-  jQuery.sap.require("sap.ui.qunit.qunit-css");
   jQuery.sap.require("sap.ui.thirdparty.qunit");
   jQuery.sap.require("sap.ui.qunit.qunit-junit");
-  jQuery.sap.require("sap.ui.qunit.qunit-coverage");
+  jQuery.sap.require("sap.ui.qunit.QUnitUtils");
   QUnit.config.autostart = false;
   sap.ui.require(
-   ["test/unit/testModules"],
+   ["my/namespace/test/unit/testModules"],
    function(){
     QUnit.start();
    }
